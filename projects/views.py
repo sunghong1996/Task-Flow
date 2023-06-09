@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def list_projects(request):
-    projects = Project.objects.all()
+    projects = Project.objects.filter(owner=request.user)
     context = {
         "list_projects": projects,
     }
